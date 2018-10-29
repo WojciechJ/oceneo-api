@@ -34,14 +34,10 @@ module OceneoApi
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'http://localhost:3001','https://oceneo.herokuapp.com/'
+        origins 'https://oceneo.herokuapp.com/','http://localhost:3001'
         resource '*', :headers => :any, :methods => [:get, :post, :put, :delete, :options]
       end
     end
 
-    config.action_dispatch.default_headers = {
-      'Access-Control-Allow-Origin' => 'https://oceneo.herokuapp.com/',
-      'Access-Control-Request-Method' => %w{GET POST OPTIONS}.join(",")
-    }
   end
 end
