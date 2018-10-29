@@ -38,5 +38,10 @@ module OceneoApi
         resource '*', :headers => :any, :methods => [:get, :post, :put, :delete, :options]
       end
     end
+
+    config.action_dispatch.default_headers = {
+      'Access-Control-Allow-Origin' => 'https://oceneo.herokuapp.com/',
+      'Access-Control-Request-Method' => %w{GET POST OPTIONS}.join(",")
+    }
   end
 end
