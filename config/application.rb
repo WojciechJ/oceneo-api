@@ -32,6 +32,10 @@ module OceneoApi
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
+    config.to_prepare do
+      DeviseController.respond_to :html, :json
+    end
+
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins 'https://oceneo.herokuapp.com/','http://localhost:3001'

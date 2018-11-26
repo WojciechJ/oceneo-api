@@ -3,8 +3,8 @@ class RatesController < ApplicationController
 
   # GET /rates
   def index
-    @rates = Rate.all
-
+    @rates = Rate.where(product_id: params[:product_id])
+    
     render json: @rates
   end
 

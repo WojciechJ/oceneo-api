@@ -4,8 +4,23 @@ class ProductsController < ApplicationController
   # GET /products
   def index
     @products = Product.all
+    @products_data = []
+    for @p in @products do
+      if (Rate.where(product_id: @p.id)).empty?
+        @avg = 0
+        @count = 0
+      else
+        @rates = Rate.where(product_id: @p.id)
+        @avg = Float(@rates.average(:value))
+        @count = @rates.count
+      end
+      @p = @p.attributes
+      @p[:avg] = @avg
+      @p[:opinions_count] = @count
+      @products_data.push(@p)
+    end
 
-    render json: @products
+    render json:{"products": @products_data}
   end
 
   # GET /products/1
@@ -13,9 +28,22 @@ class ProductsController < ApplicationController
     render json: @product
   end
 
+  def rate_stats
+    if (Rate.where(product_id: params[:id])).empty?
+      @avg = 0
+      @count = 0
+    else
+      @rates = Rate.where(product_id: params[:id])
+      @avg = @rates.average(:value)
+      @count = @rates.count
+    end
+    render json:{
+    "average": @avg,
+    "count": @count}
+  end
+
   # POST /products
   def create
-    before_action :authenticate_user!
     @product = Product.new(product_params)
 
     if @product.save
@@ -38,6 +66,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
