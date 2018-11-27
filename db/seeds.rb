@@ -25,11 +25,11 @@ user = User.new(
 )
 user.save!
 rates = Rate.create([
-  {value: 4, comment:"Świetny produkt", user_id:1, product_id: 20},
-  {value: 5, comment:"Jestem zachwycony", user_id:2, product_id: 22},
-  {value: 3, comment:"Takji sobie", user_id:1, product_id: 21},
-  {value: 1, comment:"Dno.", user_id:2, product_id: 22},
-  {value: 3, comment:"OK", user_id:1, product_id: 21},
-  {value: 2, comment:"Nie polecam", user_id:2, product_id: 20},
-  {value: 5, comment:"Świetny produkt", user_id:1, product_id: 21}
+  {value: 4, comment:"Świetny produkt", user_id:1, product_id: 3},
+  {value: 5, comment:"Jestem zachwycony", user_id:2, product_id: 2},
+  {value: 3, comment:"Takji sobie", user_id:1, product_id: 1},
+  {value: 1, comment:"Dno.", user_id:2, product_id: 2},
+  {value: 3, comment:"OK", user_id:1, product_id: 1},
+  {value: 2, comment:"Nie polecam", user_id:2, product_id: 1},
+  {value: 5, comment:"Świetny produkt", user_id:1, product_id: 2s}
   ])
