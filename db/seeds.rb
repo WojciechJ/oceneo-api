@@ -31,5 +31,5 @@ rates = Rate.create([
   {value: 1, comment:"Dno.", user_id:2, product_id: 2},
   {value: 3, comment:"OK", user_id:1, product_id: 1},
   {value: 2, comment:"Nie polecam", user_id:2, product_id: 1},
-  {value: 5, comment:"Świetny produkt", user_id:1, product_id: 2s}
+  {value: 5, comment:"Świetny produkt", user_id:1, product_id: 2}
   ])
